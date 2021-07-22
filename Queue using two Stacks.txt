@@ -1,0 +1,27 @@
+void push(struct sNode** top_ref, int new_data)
+{
+	
+	struct sNode* new_node = (struct sNode*)malloc(sizeof(struct sNode));
+
+	new_node->data = new_data;
+
+	new_node->next = (*top_ref);
+
+	(*top_ref) = new_node;
+}
+
+int pop(struct sNode** top_ref)
+{
+	int res;
+	struct sNode* top;
+	if (*top_ref == NULL) {
+        return -1;
+	}
+	else {
+		top = *top_ref;
+		res = top->data;
+		*top_ref = top->next;
+		free(top);
+		return res;
+	}
+}
